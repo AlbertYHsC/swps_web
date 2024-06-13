@@ -1,0 +1,45 @@
+﻿@model swps_web.Models.ViewModels.ResetWiFiViewModel
+
+@{
+	ViewData["Title"] = "Reset WiFi Settings";
+}
+
+<style>
+	form {
+		max-width: 500px;
+	}
+</style>
+
+<h1>@ViewData["Title"]</h1>
+<br />
+@using (Html.BeginForm())
+{
+	<hr />
+	@Html.HiddenFor(model => model.DeviceSN)
+	@Html.AntiForgeryToken()
+	<div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+	<div class="form-floating mb-3">
+		<input asp-for="DeviceSN" class="form-control" disabled />
+		<label asp-for="DeviceSN">DeviceSN</label>
+		<span asp-validation-for="DeviceSN" class="text-danger"></span>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="WiFiSsid" class="form-control" />
+		<label asp-for="WiFiSsid">WiFi SSID</label>
+		<span asp-validation-for="WiFiSsid" class="text-danger"></span>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="WiFiPassword" class="form-control" />
+		<label asp-for="WiFiPassword">WiFi Password</label>
+		<span asp-validation-for="WiFiPassword" class="text-danger"></span>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="WiFiConfirmPassword" class="form-control" />
+		<label asp-for="WiFiConfirmPassword">Confirm Password</label>
+		<span asp-validation-for="WiFiConfirmPassword" class="text-danger"></span>
+	</div>
+	<br />
+	<div>
+		<button type="submit" class="w-100 btn btn-lg btn-primary">Reset WiFi</button>
+	</div>
+}

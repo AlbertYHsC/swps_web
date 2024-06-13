@@ -1,0 +1,102 @@
+﻿@model swps_web.Models.RecordDevice
+
+@{
+    ViewData["Title"] = "Record Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.DeviceSN)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.DeviceSN)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Record!.Temperature)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Record!.Temperature) &#x2103
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Record!.Humidity)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Record!.Humidity) %
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Record!.Pressure)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Record!.Pressure) hPa
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Record!.RawValue0)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Record!.RawValue0)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Record!.RawValue1)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Record!.RawValue1)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Record!.RawValue2)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Record!.RawValue2)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Record!.RawValue3)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Record!.RawValue3)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Record!.Voltage0)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Record!.Voltage0) V
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Record!.Voltage1)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Record!.Voltage1) V
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Record!.Voltage2)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Record!.Voltage2) V
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Record!.Voltage3)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Record!.Voltage3) V
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Record!.DetectTime)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Record!.DetectTime)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Record!.PumpStartTime)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Record!.PumpStartTime) s
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <br />
+    <a asp-action="Index">Return to list page</a>
+</div>

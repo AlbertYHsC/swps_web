@@ -1,0 +1,45 @@
+﻿@model swps_web.Models.Device
+
+@{
+	ViewData["Title"] = "Change Device Settings";
+}
+
+<style>
+	form {
+		max-width: 500px;
+	}
+</style>
+
+<h1>@ViewData["Title"]</h1>
+<br />
+@using (Html.BeginForm())
+{
+	<hr />
+	@Html.HiddenFor(model => model.DeviceSN)
+	@Html.AntiForgeryToken()
+	<div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+	<div class="form-floating mb-3">
+		<input asp-for="DeviceSN" class="form-control" disabled />
+		<label asp-for="DeviceSN">DeviceSN</label>
+		<span asp-validation-for="DeviceSN" class="text-danger"></span>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="DetectInterval" class="form-control" />
+		<label asp-for="DetectInterval">Detection Interval</label>
+		<span asp-validation-for="DetectInterval" class="text-danger"></span>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="PumpStartTime" class="form-control" />
+		<label asp-for="PumpStartTime">Pump Start Time</label>
+		<span asp-validation-for="PumpStartTime" class="text-danger"></span>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="SoilMoisture" class="form-control" />
+		<label asp-for="SoilMoisture">Soil Moisture</label>
+		<span asp-validation-for="SoilMoisture" class="text-danger"></span>
+	</div>
+	<br />
+	<div>
+		<button type="submit" class="w-100 btn btn-lg btn-primary">Update</button>
+	</div>
+}

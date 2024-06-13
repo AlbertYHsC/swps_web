@@ -1,0 +1,61 @@
+﻿@model swps_web.Models.ViewModels.RegisterDeviceViewModel
+
+@{
+	ViewData["Title"] = "Register Device";
+}
+
+<style>
+	form {
+		max-width: 500px;
+	}
+</style>
+
+<h1>@ViewData["Title"]</h1>
+<br />
+@using (Html.BeginForm())
+{
+	<hr />
+	@Html.HiddenFor(model => model.Device!.DeviceSN)
+	@Html.HiddenFor(model => model.ResetWiFi!.DeviceSN)
+	@Html.AntiForgeryToken()
+	<div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+	<div class="form-floating mb-3">
+		<input asp-for="Device!.DeviceSN" class="form-control" disabled />
+		<label asp-for="Device!.DeviceSN">DeviceSN</label>
+		<span asp-validation-for="Device!.DeviceSN" class="text-danger"></span>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="Device!.DetectInterval" class="form-control" />
+		<label asp-for="Device!.DetectInterval">Detection Interval</label>
+		<span asp-validation-for="Device!.DetectInterval" class="text-danger"></span>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="Device!.PumpStartTime" class="form-control" />
+		<label asp-for="Device!.PumpStartTime">Pump Start Time</label>
+		<span asp-validation-for="Device!.PumpStartTime" class="text-danger"></span>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="Device!.SoilMoisture" class="form-control" />
+		<label asp-for="Device!.SoilMoisture">Soil Moisture</label>
+		<span asp-validation-for="Device!.SoilMoisture" class="text-danger"></span>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="ResetWiFi!.WiFiSsid" class="form-control" />
+		<label asp-for="ResetWiFi!.WiFiSsid">WiFi SSID</label>
+		<span asp-validation-for="ResetWiFi!.WiFiSsid" class="text-danger"></span>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="ResetWiFi!.WiFiPassword" class="form-control" />
+		<label asp-for="ResetWiFi!.WiFiPassword">WiFi Password</label>
+		<span asp-validation-for="ResetWiFi!.WiFiPassword" class="text-danger"></span>
+	</div>
+	<div class="form-floating mb-3">
+		<input asp-for="ResetWiFi!.WiFiConfirmPassword" class="form-control" />
+		<label asp-for="ResetWiFi!.WiFiConfirmPassword">Confirm Password</label>
+		<span asp-validation-for="ResetWiFi!.WiFiConfirmPassword" class="text-danger"></span>
+	</div>
+	<br />
+	<div>
+		<button type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+	</div>
+}

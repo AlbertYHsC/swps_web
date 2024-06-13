@@ -1,0 +1,102 @@
+﻿@model swps_web.Models.ViewModels.DeviceViewModel
+
+@{
+    ViewData["Title"] = "Device Management";
+}
+
+<h1>@ViewData["Title"]</h1>
+<br />
+@using (Html.BeginForm("Index", "Device", FormMethod.Post))
+{
+    <h3>Device Server</h3>
+    <div>
+        <p>
+            Device SN: @Html.DisplayFor(model => model.ServerSN)
+        </p>
+        <p>
+            Status:
+            @if (Model != null)
+            {
+                if (Model.ServerStatus)
+                {
+                    <label class="text-success">Online</label>
+                }
+                else
+                {
+                    <label class="text-danger">Offline</label>
+                }
+            }
+        </p>
+        <button type="submit" class="btn btn-outline-primary">Renew</button>
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients![0].DeviceSN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients![0].Status)
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model.Clients!)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeviceSN)
+                    </td>
+                    <td>
+                        @if (item.Status)
+                        {
+                            <label class="text-success">Online</label>
+                        }
+                        else
+                        {
+                            <label class="text-danger">Offline</label>
+                        }
+                    </td>
+                    <td>
+                        @if (item.Registered && item.Status)
+                        {
+                            @using (Html.BeginForm("ResetWiFi", "Device", FormMethod.Post))
+                            {
+                                <input asp-for="@item.DeviceSN" type="hidden" name="DeviceSN" />
+                                <button type="submit" class="btn btn-link">Reset WiFi</button>
+                            }
+                        }
+                        else if (item.Status)
+                        {
+                            @using (Html.BeginForm("Register", "Device", FormMethod.Post))
+                            {
+                                <input asp-for="@item.DeviceSN" type="hidden" name="DeviceSN" />
+                                <button type="submit" class="btn btn-link">Register</button>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @if (item.Registered && item.Status)
+                        {
+                            @using (Html.BeginForm("ChangeSettings", "Device", FormMethod.Post))
+                            {
+                                <input asp-for="@item.DeviceSN" type="hidden" name="DeviceSN" />
+                                <button type="submit" class="btn btn-link">Settings</button>
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

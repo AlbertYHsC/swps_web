@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using swps_web.Areas.Identity.Data
+
+@inject SignInManager<swps_webUser> SignInManager
+@inject UserManager<swps_webUser> UserManager
+
+<ul class="navbar-nav flex-grow-1">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Device" asp-action="Index">Device</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Record" asp-action="Index">Record</a>
+    </li>
+}
+</ul>
+

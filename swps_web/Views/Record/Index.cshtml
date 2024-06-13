@@ -1,0 +1,95 @@
+﻿@model swps_web.Models.ViewModels.RecordViewModel
+
+@{
+    ViewData["Title"] = "Sensor Records";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@using (Html.BeginForm("Index", "Record", FormMethod.Post))
+{
+    <p>
+        Device SN: <select asp-for="DeviceSN" asp-items="Model.Devices">
+            <option value="">All</option>
+        </select>
+    </p>
+    <p>
+        Duration: <input asp-for="StartTime" />
+        ~ <input asp-for="EndTime" />
+        <input type="submit" value="Filter" />
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Records![0].DeviceSN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records![0].Record!.DetectTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records![0].Record!.Temperature)&#40&#x2103&#41;
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records![0].Record!.Humidity)&#40%&#41
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records![0].Record!.Pressure)&#40hPa&#41
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records![0].Record!.RawValue2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records![0].Record!.PumpStartTime)&#40s&#41
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records![0].Record!.RawValue1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records![0].Record!.RawValue0)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Records!)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeviceSN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Record!.DetectTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Record!.Temperature)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Record!.Humidity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Record!.Pressure)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Record!.RawValue2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Record!.PumpStartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Record!.RawValue1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Record!.RawValue0)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Record!.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
