@@ -1,0 +1,17 @@
+[Unit]
+Description=Smart water pump system web app service.
+
+[Service]
+WorkingDirectory=/your_website_folder_path
+ExecStart=/usr/bin/dotnet /your_website_folder_path/swps_web.dll
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=swps-dotnet-web
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_NOLOGO=true
+
+[Install]
+WantedBy=multi-user.target
