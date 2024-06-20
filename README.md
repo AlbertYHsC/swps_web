@@ -11,7 +11,8 @@ This website provide a interface to control the following programs:
 3. Publish this website application to a folder.
 4. Copy the published folder to the IoT server device.
 5. Please refer to `000-default.conf` and `swps-web.service` to setup website service.
-6. Login your WiFi router to set a static ip address for this IoT server device.
+6. Modify the values of the following sections in the `appsettings.json` file: `Url`, `Certificate`, `ConnectionStrings`, `SWPSService:Port`.
+7. Login your WiFi router to set a static ip address for this IoT server device.
 
 ## Dependencies
 * [Identity.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity.EntityFrameworkCore/8.0.4)
